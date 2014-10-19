@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'Apps.forum',
     'Apps.poll',
     'Apps.report',
+    'EthicsWorld'
 )
 
 MIDDLEWARE_CLASSES = (
