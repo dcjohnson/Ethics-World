@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <div id = "top">
+        </div>
+        <div id = "links">
+            <ul id = "sitelinks">
+                <li>
+                    <a href = "{% url 'Apps.home.views.index'%}">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href = "{% url 'forum:index'%}">
+                        Forum
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id = "body">
+            {% block test %} This should be overridden {% endblock %}
+        </div>
+    </body>
+</html>
