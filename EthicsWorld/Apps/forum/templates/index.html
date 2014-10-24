@@ -1,3 +1,15 @@
-{% extends "homepage/basesite.html" %}
+{% extends "basesite.html" %}
 
-{% block test %} Sucesses! {% endblock %}
+{% block body %}
+    <div class = "question">
+        <textarea name = "question" form = "questionform" rows = "4" columns = "50">
+            Enter new question here.
+        </textarea>
+        <form action = "{% url 'forum:createquestion' %}" method = "POST" id = "questionform">
+            {% csrf_token %}
+            <input type = "submit" value = "Post Question"/>
+        </form>
+    </div>
+    <div class = "question">
+    </div>
+{% endblock %}

@@ -2,7 +2,7 @@ from django.db import models
 
 class Issue(models.Model):
 	issueQuestion = models.TextField()
-	issueDate = models.DateTimeField('Issue Date')
+	issueDate = models.DateTimeField(auto_now_add = True)
 	issueHash = models.CharField(max_length = 40)
 
 class Responses(models.Model):

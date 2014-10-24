@@ -1,6 +1,9 @@
 <html>
     <body>
         <div id = "top">
+            <a href = "{% url 'admin:index' %}">
+                Administrator
+            </a>
         </div>
         <div id = "links">
             <ul id = "sitelinks">
@@ -17,7 +20,11 @@
             </ul>
         </div>
         <div id = "body">
-            {% block test %} This should be overridden {% endblock %}
+            {% block body %}
+                <h1>
+                    Welcome to the home site.
+                </h1>
+            {% endblock %}
         </div>
     </body>
 </html>
