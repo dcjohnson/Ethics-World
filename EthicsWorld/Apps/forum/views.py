@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-from Apps.forum.models import Issue
+from Apps.forum.models import Issue, Responses
 import hashlib
+
 
 def GetHash(rawString):
     newHash = hashlib.sha1()
@@ -10,14 +11,39 @@ def GetHash(rawString):
     return newHash.hexdigest()
 
 def index(request):
-    return render(request, 'index.html')
+    sqlData = Issue.objects.all()
+    htmlData = {
+        'questions' : sqlData,
+    }
+    return render(request, 'index.html', htmlData)
 
-def createquestion(request):
+def IndividualQuestionPage(request):
+    try:
+        sqlIssueData = Issue.objects.get(issueHash = request.GET['questionHash'])
+        sqlResponsesData = Responses.objects.filter(responsesIssueHash = request.GET['questionHash'])
+        htmlData = {
+            'question':sqlIssueData,
+            'answers':sqlResponsesData,
+        }
+        return render(request, 'individualquestion.html', htmlData)
+    except:
+        return HttpResponseRedirect(reverse("forum:index"))
+
+def CreateComment(request):
+    try:
+        newComment = Responses()
+        newComment.responsesIssueHash = request.POST['issueHash']
+        newComment.responsesResponse = request.POST['comment']
+        newComment.responsesHash = GetHash(request.POST['comment'])
+        newComment.save()
+    finally:
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def CreateQuestion(request):
     try:
         newIssue = Issue()
         newIssue.issueQuestion = request.POST['question']
         newIssue.issueHash = GetHash(request.POST['question'])
         newIssue.save()
+    finally:
         return HttpResponseRedirect(reverse("forum:index"))
-    except:
-        return HttpResponse("FAIL")

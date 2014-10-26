@@ -2,8 +2,8 @@
 
 {% block body %}
     <div class = "question">
-        <textarea name = "question" form = "questionform" rows = "4" columns = "50">
-            Enter new question here.
+        <textarea name = "question" form = "questionform" rows = "5" columns = "100">
+        Enter new question here.
         </textarea>
         <form action = "{% url 'forum:createquestion' %}" method = "POST" id = "questionform">
             {% csrf_token %}
@@ -11,5 +11,14 @@
         </form>
     </div>
     <div class = "question">
+        <ul>
+            {% for question in questions %}
+                <li>
+                    <a href = "{% url 'forum:individualquestion'%}?questionHash={{ question.issueHash }}">
+                        {{ question.issueQuestion }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}

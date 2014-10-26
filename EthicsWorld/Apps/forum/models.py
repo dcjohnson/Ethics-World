@@ -8,5 +8,5 @@ class Issue(models.Model):
 class Responses(models.Model):
 	responsesIssueHash = models.CharField(max_length = 40)
 	responsesResponse = models.TextField()
-	responsesDate = models.DateTimeField('Response Date')
+	responsesDate = models.DateTimeField(auto_now_add = True)
 	responsesHash = models.CharField(max_length = 40)

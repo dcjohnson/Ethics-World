@@ -1,0 +1,39 @@
+{% extends "basesite.html" %}
+
+{% block body %}
+    <div id = "questionComments">
+        <ul>
+            <li>
+                <p>
+                    {{ question.issueQuestion }}
+                    </br>
+                    Posted on:
+                    {{ question.issueDate }}
+                </p>
+            </li>
+            {% for answer in answers %}
+                <li>
+                    <p>
+                        {{ answer.responsesResponse }}
+                        </br>
+                        Posted on:
+                        {{ answer.responsesDate }}
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div id = "newComment">
+        <h3>
+            Comment
+        </h3>
+        <textarea name = "comment" form = "commentform" rows = "5" columns = "100">
+        Enter new comment here.
+        </textarea>
+        <form action = "{% url 'forum:createcomment' %}" method = "POST" id = "commentform">
+            {% csrf_token %}
+            <input type = "hidden" name = "issueHash" value = "{{question.issueHash}}" />
+            <input type = "submit" value = "Submit Comment"/>
+        </form>
+    </div>
+{% endblock %}

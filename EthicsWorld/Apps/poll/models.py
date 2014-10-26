@@ -2,7 +2,7 @@ from django.db import models
 
 class Question(models.Model):
     questionText = models.TextField()
-    quesiionDate = models.DateTimeField('Question Date')
+    quesiionDate = models.DateTimeField(auto_now_add = True)
     questionHash = models.CharField(max_length = 40)
 
 class AvaliableAnswers(models.Model):
@@ -13,5 +13,5 @@ class AvaliableAnswers(models.Model):
 class Answer(models.Model):
     answerQuestionHash = models.CharField(max_length = 40)
     answerChoiceHash = models.CharField(max_length = 40)
-    answerDateResponded = models.DateTimeField('Date Answered')
+    answerDateResponded = models.DateTimeField(auto_now_add = True)
     answerIPOfAnswerer = models.GenericIPAddressField()
