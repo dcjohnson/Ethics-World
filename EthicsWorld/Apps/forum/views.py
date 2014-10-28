@@ -2,15 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from Apps.forum.models import Issue, Responses
-import hashlib
+from common import helpers
 
-
-def GetHash(rawString):
-    newHash = hashlib.sha1()
-    newHash.update(bytes(rawString, encoding = 'utf-8'))
-    return newHash.hexdigest()
-
-def index(request):
+def Index(request):
     sqlData = Issue.objects.all()
     htmlData = {
         'questions' : sqlData,
@@ -34,7 +28,7 @@ def CreateComment(request):
         newComment = Responses()
         newComment.responsesIssueHash = request.POST['issueHash']
         newComment.responsesResponse = request.POST['comment']
-        newComment.responsesHash = GetHash(request.POST['comment'])
+        newComment.responsesHash = helpers.GetHash(request.POST['comment'])
         newComment.save()
     finally:
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -43,7 +37,7 @@ def CreateQuestion(request):
     try:
         newIssue = Issue()
         newIssue.issueQuestion = request.POST['question']
-        newIssue.issueHash = GetHash(request.POST['question'])
+        newIssue.issueHash = helpers.GetHash(request.POST['question'])
         newIssue.save()
     finally:
         return HttpResponseRedirect(reverse("forum:index"))

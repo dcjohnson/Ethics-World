@@ -1,7 +1,7 @@
 {% extends "basesite.html" %}
 
 {% block body %}
-    <div class = "question">
+    <div id = "newquestion">
         <textarea name = "question" form = "questionform" rows = "5" columns = "100">
         Enter new question here.
         </textarea>
@@ -10,7 +10,7 @@
             <input type = "submit" value = "Post Question"/>
         </form>
     </div>
-    <div class = "question">
+    <div id = "questions">
         <ul>
             {% for question in questions %}
                 <li>

@@ -1,6 +1,35 @@
 {% extends "basesite.html" %}
 
 {% block body %}
-
-
+<div id = "newnews">
+    <form action = "{% url 'news:addnews' %}" method = "POST" id = "newsform">
+        {% csrf_token %}
+        <input type = "url" name = "newsurl"/>
+        <br/>
+        <textarea name = "newsinformation" form = "newsform" rows = "5" columns = "100">
+            Enter new information about the news here.
+        </textarea>
+        <br/>
+        <input type = "submit" value = "Post Question"/>
+    </form>
+</div>
+<div id = "currentnews">
+    <ul>
+        {% for news in newsreports %}
+            <li>
+                <a href = "{{ news.newsLink }}" target = "_blank">
+                    {{ news.newsLink }}
+                </a>
+                <br/>
+                <p>
+                    {{ news.newsText }}
+                </p>
+                <p>
+                    Posted on
+                    {{ news.newsDate }}
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}
