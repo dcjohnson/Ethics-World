@@ -15,7 +15,7 @@ def index(request):
     htmlData = {
         'questions' : sqlData,
     }
-    return render(request, 'index.html', htmlData)
+    return render(request, 'forumindex.html', htmlData)
 
 def IndividualQuestionPage(request):
     try:
