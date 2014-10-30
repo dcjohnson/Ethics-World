@@ -4,7 +4,7 @@
 <div id = "newnews">
     <form action = "{% url 'news:addnews' %}" method = "POST" id = "newsform">
         {% csrf_token %}
-        <input type = "url" name = "newsurl"/>
+        Input url of news site here <input type = "url" name = "newsurl"/>
         <br/>
         <textarea name = "newsinformation" form = "newsform" rows = "5" columns = "100">
             Enter new information about the news here.
@@ -28,6 +28,9 @@
                     Posted on
                     {{ news.newsDate }}
                 </p>
+                <a href = "{% url 'news:commentpage' %}" target = "_blank">
+                    Click here to view and make comments.
+                </a>
             </li>
         {% endfor %}
     </ul>

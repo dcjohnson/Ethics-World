@@ -7,6 +7,7 @@ class News(models.Model):
 	newsHash = models.CharField(max_length = 40)
 
 class Discussion(models.Model):
+	discussionNewsHash = models.CharField(max_length = 40)
 	discussionText = models.TextField()
 	discussionDate = models.DateTimeField(auto_now_add = True)
 	discussionHash = models.CharField(max_length = 40)

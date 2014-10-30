@@ -21,3 +21,6 @@ def AddNews(request):
         return HttpResponse(request.POST['newsurl'])
     finally:
         return HttpResponseRedirect(reverse("news:index"))
+
+def CommentPage(request):
+    return render(request, 'commentsection.html')
