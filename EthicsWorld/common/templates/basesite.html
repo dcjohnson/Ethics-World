@@ -1,0 +1,40 @@
+<html>
+    <head>
+        {% block head %}
+
+        {% endblock %}
+    </head>
+    <body>
+        <div id = "top">
+            <a href = "{% url 'admin:index' %}">
+                Administrator
+            </a>
+        </div>
+        <div id = "links">
+            <ul id = "sitelinks">
+                <li>
+                    <a href = "{% url 'common.helpers.Index'%}">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href = "{% url 'forum:index'%}">
+                        Forum
+                    </a>
+                </li>
+                <li>
+                    <a href = "{% url 'news:index' %}">
+                        News
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id = "body">
+            {% block body %}
+                <h1>
+                    Welcome to the home site.
+                </h1>
+            {% endblock %}
+        </div>
+    </body>
+</html>
