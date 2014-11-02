@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     'Apps.forum',
     'Apps.poll',
     'Apps.report',
-    'Apps.home'
+    'common'
 )
 
 MIDDLEWARE_CLASSES = (
