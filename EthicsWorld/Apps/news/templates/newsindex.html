@@ -25,10 +25,9 @@
                     {{ news.newsText }}
                 </p>
                 <p>
-                    Posted on
-                    {{ news.newsDate }}
+                    Posted on: {{ news.newsDate }}
                 </p>
-                <a href = "{% url 'news:commentpage' %}" target = "_blank">
+                <a href = "{% url 'news:commentpage' %}?newsHash={{ news.newsHash }}" target = "_blank">
                     Click here to view and make comments.
                 </a>
             </li>

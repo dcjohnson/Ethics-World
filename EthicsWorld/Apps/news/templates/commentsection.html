@@ -1,5 +1,39 @@
 {% extends "basesite.html" %}
 
 {% block body %}
-
+    <div id = "news">
+        <a href = "{{ newsdata.newsLink }}">
+            {{ newsdata.newsLink }}
+        </a>
+        <p>
+            {{ newsdata.newsText }}
+        </p>
+        <p>
+            Posted on: {{ newsdata.newsDate }}
+        </p>
+    </div>
+    <div id = "comments">
+        <ul>
+            {% for comment in commentdata %}
+                <li>
+                    <p>
+                        {{ comment.discussionText }}
+                    </p>
+                    <p>
+                        Posted on: {{ comment.discussionDate }}
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+        <form action = "{% url 'news:createcomment' %}" method = "POST" id = "commentform">
+            {% csrf_token %}
+            <input type = "hidden" name = "newshash" value = "{{ newsdata.newsHash }}"/>
+            <br/>
+            <textarea name = "commenttext" form = "commentform" rows = "5" columns = "100">
+                Enter new information about the news here.
+            </textarea>
+            <br/>
+            <input type = "submit" value = "Post Comment"/>
+        </form>
+    </div>
 {% endblock %}
