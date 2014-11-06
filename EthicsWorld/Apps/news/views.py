@@ -9,7 +9,7 @@ def Index(request):
     htmlData = {
         'newsreports':sqlData
     }
-    return render(request, 'newsindex.html', htmlData)
+    return render(request, 'news/newsindex.html', htmlData)
 
 def AddNews(request):
     try:
@@ -39,6 +39,6 @@ def CommentPage(request):
             'newsdata':newsData,
             'commentdata':commentData
         }
-        return render(request, 'commentsection.html', htmlData)
+        return render(request, 'news/commentsection.html', htmlData)
     except:
         return HttpResponseRedirect(reverse("news:index"))

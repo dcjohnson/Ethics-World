@@ -10,4 +10,4 @@ def GetHash(rawString):
     return newHash.hexdigest()
 
 def Index(request):
-    return render(request, 'basesite.html')
+    return render(request, 'home/basesite.html')

@@ -9,7 +9,7 @@ def Index(request):
     htmlData = {
         'polls':pollData
     }
-    return render(request, "pollindex.html", htmlData)
+    return render(request, "poll/pollindex.html", htmlData)
 
 def IndividualPoll(request):
     try:
@@ -19,7 +19,7 @@ def IndividualPoll(request):
             'poll':pollData,
             'avaliableanswers':answerData
         }
-        return render(request, "individualpoll.html", htmlData)
+        return render(request, "poll/individualpoll.html", htmlData)
     except:
         return HttpResponseRedirect(reverse("poll:index"))
 

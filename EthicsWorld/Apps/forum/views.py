@@ -9,7 +9,7 @@ def Index(request):
     htmlData = {
         'questions' : sqlData,
     }
-    return render(request, 'forumindex.html', htmlData)
+    return render(request, 'forum/forumindex.html', htmlData)
 
 def IndividualQuestionPage(request):
     try:
@@ -19,7 +19,7 @@ def IndividualQuestionPage(request):
             'question':sqlIssueData,
             'answers':sqlResponsesData,
         }
-        return render(request, 'individualquestion.html', htmlData)
+        return render(request, 'forum/individualquestion.html', htmlData)
     except:
         return HttpResponseRedirect(reverse("forum:index"))
 
