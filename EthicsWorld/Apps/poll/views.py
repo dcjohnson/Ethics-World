@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from Apps.poll.models import Question, AvaliableAnswers, Answer
 from common import helpers
 from django.db.models import Count
-from itertools import chain
 
 def Index(request):
     pollData = Question.objects.all()
