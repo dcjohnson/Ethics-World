@@ -37,6 +37,10 @@
                     <a href = "{% url 'poll:indivpoll' %}?pollhash={{ poll.questionHash }}">
                         {{ poll.questionText }}
                     </a>
+                    </br>
+                    <a href = "{% url 'poll:pollstats' %}?questionhash={{ poll.questionHash }}">
+                        View statistics
+                    </a>
                 </li>
             {% endfor %}
         </ul>

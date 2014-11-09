@@ -1,4 +1,19 @@
 {% extends "home/basesite.html" %}
 
 {% block body %}
+    <div id = "takepolldiv">
+        <h2>
+            {{ poll.questionText }}
+        </h2>
+        <form action = "{% url 'poll:newpollresponse' %}" method = "POST" id = "pollresponse">
+            {% csrf_token %}
+            {% for answer in avaliableanswers %}
+                <input type = "radio" value = "{{ answer.avaliableAnswersHash }}" name = "pollanswer" required>
+                    {{ answer.avaliableAnswersText }}
+                </br>
+            {% endfor %}
+            <input type = "hidden" value = "{{ poll.questionHash }}" name = "questionhash">
+            <input type = "submit" value = "Submit Answer">
+        </form>
+    </div>
 {% endblock %}

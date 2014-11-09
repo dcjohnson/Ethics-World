@@ -1,0 +1,17 @@
+{% extends "home/basesite.html" %}
+
+{% block body %}
+    <div id = "pollstats">
+        <h2>
+            Response statistics for: {{ question.questionText }}
+        </h2>
+        {% for response in responseData %}
+            <p>
+                {{ response.0.total }} of {{ responsesCount }} who voted chose {{ response.1.avaliableAnswersText }}
+            </p>
+            <meter value = "{{ response.0.total }}" min = "0" max = "{{ responsesCount }}">
+                {{ test.0.total }} out of {{ responsesCount }}
+            </meter>
+        {% endfor %}
+    </div>
+{% endblock %}
