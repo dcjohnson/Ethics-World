@@ -62,6 +62,7 @@ def GetPollResponse(request):
         newAnswer.answerChoiceHash = request.POST['pollanswer']
         newAnswer.answerQuestionHash = request.POST['questionhash']
         newAnswer.save()
-        return HttpResponseRedirect(reverse("poll:pollstats") + "?questionhash=" + request.POST['questionhash'])
+        url = reverse("poll:pollstats") + "?questionhash=" + request.POST['questionhash']
+        return HttpResponseRedirect(url)
     except:
         return HttpResponseRedirect(reverse("poll:index"))
