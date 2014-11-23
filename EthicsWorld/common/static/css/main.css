@@ -23,6 +23,8 @@ body {
 #links > ul > li {
 	background-color: black;
 	padding: 15px;
+	margin-right: 5px;
+	margin-left: 5px;
 	display: inline;
 }
 
