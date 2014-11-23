@@ -6,7 +6,7 @@
 
 {% block body %}
     <div id = "newquestion">
-        <textarea name = "question" form = "questionform" rows = "5" cols = "20" placeholder="Enter new question here."></textarea>
+        <textarea name = "question" form = "questionform" rows = "5" cols = "20" placeholder="Enter new question here." required></textarea>
         <form action = "{% url 'forum:createquestion' %}" method = "POST" id = "questionform">
             {% csrf_token %}
             <input type = "submit" value = "Post Question"/>
