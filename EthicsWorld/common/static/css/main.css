@@ -3,7 +3,7 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
-#links > ul {
+#links {
 	padding-left: 10px;
 	padding-right: 10px;
 	margin: auto;
