@@ -59,6 +59,8 @@ body {
 	margin-right: auto;
 	margin-left: auto;
 
+	padding: 10px;
+
 	width: 50%;
 	background-color: rgba(20, 20, 20, 0.5);
 }
