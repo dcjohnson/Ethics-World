@@ -83,7 +83,7 @@ textarea {
 	border-radius: 5px;
 
 	width: 70%;
-	background-color: rgb(240, 240, 240);
+	background-color: #4284d3;
 
 	box-shadow: 0 0 5px rgba(20, 20, 20, 0.5);
 }
@@ -103,7 +103,7 @@ textarea {
 
 #newquestion [name=question]:focus {
 	background-color: white;
-	box-shadow: 0 0 5px rgba(20, 20, 20, 0.5);
+	box-shadow: 0 0 5px );
 }
 
 #newquestion input[type=submit] {
