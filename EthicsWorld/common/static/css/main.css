@@ -68,7 +68,6 @@ textarea {
 #newquestion {
 	margin-right: auto;
 	margin-left: auto;
-	margin-bottom: 5px;
 
 	padding: 10px;
 	border-radius: 3px;
@@ -80,8 +79,11 @@ textarea {
 #newquestion [name=question] {
 	transition: box-shadow 0.15s linear;
 	padding: 5px;
+	margin-bottom: 5px;
+
 	border-radius: 3px;
 	border-width: 0;
+
 	width: 100%;
 }
 
