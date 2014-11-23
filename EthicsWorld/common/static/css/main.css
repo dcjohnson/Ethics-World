@@ -65,3 +65,7 @@ body {
 	width: 50%;
 	background-color: rgba(20, 20, 20, 0.5);
 }
+
+#question {
+	width: 100%;
+}
