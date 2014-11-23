@@ -1,5 +1,5 @@
 body {
-	background-color: white;
+	background-color: lightgrey;
 	font-family: 'Open Sans', sans-serif;
 
 	width: 80%;
@@ -83,7 +83,7 @@ textarea {
 	border-radius: 5px;
 
 	width: 70%;
-	background-color: rgb(200, 200, 200);
+	background-color: rgb(40, 40, 40);
 
 	box-shadow: 0 0 5px rgba(20, 20, 20, 0.5);
 }
