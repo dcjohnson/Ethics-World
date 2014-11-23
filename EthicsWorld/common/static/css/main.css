@@ -120,6 +120,7 @@ textarea {
 
 #questions > ul {
 	width: 70%;
+	margin: auto;
 	list-style-type: none;
 }
 
