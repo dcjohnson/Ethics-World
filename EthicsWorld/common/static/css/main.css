@@ -103,3 +103,8 @@ textarea {
 	background-color: white;
 	box-shadow: 0 0 5px rgba(20, 20, 20, 0.5);
 }
+
+#newquestion button {
+	padding: 2px;
+	background-color: rgb(20, 20, 20);
+}
