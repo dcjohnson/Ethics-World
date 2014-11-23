@@ -92,5 +92,6 @@ textarea {
 }
 
 #newquestion [name=question]:focus {
+	background-color: white;
 	box-shadow: 0 0 5px rgba(20, 20, 20, 0.5);
 }
