@@ -132,4 +132,6 @@ textarea {
 	margin: auto;
 	margin-top: 5px;
 	margin-bottom: 5px;
+
+	box-shadow: 0 0 5px rgba(20, 20, 20, 0.5);
 }
