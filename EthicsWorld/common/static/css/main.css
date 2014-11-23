@@ -113,3 +113,7 @@ textarea {
 	border: none;
 	border-radius: 3px;
 }
+
+#newquestion input[type=submit]:hover {
+	cursor: pointer;
+}
