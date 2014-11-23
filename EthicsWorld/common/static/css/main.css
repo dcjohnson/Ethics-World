@@ -21,6 +21,7 @@ body {
 }
 
 #links > ul > li {
+	transition: color 1s linear 2s;
 	background-color: black;
 	padding: 15px;
 	padding-top: 5px;
