@@ -7,7 +7,7 @@ body {
 }
 
 /* keeps elements from transitioning on page load */
-.preload {
+.preload * {
 	-webkit-transition: none !important;
 	-moz-transition: none !important;
 	-ms-transition: none !important;
