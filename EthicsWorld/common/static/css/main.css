@@ -30,6 +30,10 @@ body {
 	display: inline;
 }
 
+#links > ul > li:hover {
+	background-color: grey;
+}
+
 #links > ul > li > a {
 	color: white;
 	text-decoration: none;
