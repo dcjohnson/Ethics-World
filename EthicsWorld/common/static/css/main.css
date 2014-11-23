@@ -53,6 +53,11 @@ body {
 	text-decoration: none;
 }
 
+/* no outline! */
+input:focus, select:focus, textarea:focus, button:focus {
+	outline: none;
+}
+
 /* Forum (eventually move there) */
 
 #newquestion {
