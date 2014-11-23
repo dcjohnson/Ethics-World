@@ -20,7 +20,7 @@ body {
 
 #top > a {
 	color: white;
-	text-decoration: none;	
+	text-decoration: none;
 }
 
 #links {
@@ -40,6 +40,8 @@ body {
 	margin-right: 5px;
 	margin-left: 5px;
 	display: inline;
+	border-radius: 3px;
+	box-shadow: 2px 2px black;
 }
 
 #links > ul > li:hover {
