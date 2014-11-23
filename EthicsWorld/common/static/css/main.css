@@ -41,7 +41,7 @@ body {
 	margin-left: 5px;
 	display: inline;
 	border-radius: 3px;
-	box-shadow: 2px 2px black;
+	box-shadow: 0 0 2px black;
 }
 
 #links > ul > li:hover {
