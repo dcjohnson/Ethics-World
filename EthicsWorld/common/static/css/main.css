@@ -80,7 +80,7 @@ textarea {
 
 #newquestion [name=question] {
 	transition: box-shadow 0.5s linear;
-	transition: background-color 0.15s linear;
+	transition: background-color 0.5s linear;
 	padding: 5px;
 	margin-bottom: 5px;
 
