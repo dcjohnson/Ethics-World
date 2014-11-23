@@ -68,5 +68,6 @@ body {
 
 #newquestion [name=question] {
 	border-radius: 3px;
+	border-width: 0;
 	width: 100%;
 }
