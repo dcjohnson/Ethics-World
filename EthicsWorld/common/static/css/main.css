@@ -108,8 +108,8 @@ textarea {
 
 #newquestion input[type=submit] {
 	padding: 5px;
-	color: #4284d3;
+	background-color: #4284d3;
+	color: white;
 	border: none;
 	border-radius: 3px;
-	background-color: rgb(60, 60, 60);
 }
