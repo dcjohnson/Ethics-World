@@ -22,4 +22,5 @@ body {
 
 #links > ul > li > a {
 	color: white;
+	text-decoration: none;
 }
