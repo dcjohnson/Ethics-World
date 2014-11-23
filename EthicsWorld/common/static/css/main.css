@@ -74,6 +74,8 @@ textarea {
 
 	width: 50%;
 	background-color: rgb(240, 240, 240);
+
+	box-shadow: 0 0 5px rgba(20, 20, 20, 0.5);
 }
 
 #newquestion [name=question] {
