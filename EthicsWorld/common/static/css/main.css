@@ -22,7 +22,7 @@ body {
 
 #links > ul > li {
 	transition: background-color 0.25s linear;
-	background-color: black;
+	background-color: rgb(20, 20, 20);
 	padding: 15px;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -32,7 +32,7 @@ body {
 }
 
 #links > ul > li:hover {
-	background-color: grey;
+	background-color: rgb(45, 45, 45);
 }
 
 #links > ul > li > a {
