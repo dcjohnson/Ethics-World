@@ -18,6 +18,11 @@ body {
 	border-radius: 3px;
 }
 
+#top > a {
+	color: white;
+	text-decoration: none;	
+}
+
 #links {
 	padding-left: 10px;
 	padding-right: 10px;
