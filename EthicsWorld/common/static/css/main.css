@@ -77,6 +77,6 @@ input:focus, select:focus, textarea:focus, button:focus {
 	width: 100%;
 }
 
-#newquestion [name=question]:hover {
+#newquestion [name=question]:focus {
 	box-shadow: 0 0 2px black;
 }
