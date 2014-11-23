@@ -66,6 +66,6 @@ body {
 	background-color: rgba(20, 20, 20, 0.5);
 }
 
-#question {
+#newquestion [name=question] {
 	width: 100%;
 }
