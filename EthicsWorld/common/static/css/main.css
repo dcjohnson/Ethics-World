@@ -91,6 +91,7 @@ textarea {
 #newquestion [name=question] {
 	transition: all 0.25s linear;
 	padding: 5px;
+	margin-bottom: 5px;
 
 	background-color: rgba(0,0,0,0);
 
