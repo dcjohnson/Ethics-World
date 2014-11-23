@@ -119,6 +119,7 @@ textarea {
 }
 
 #questions > ul {
+	width: 70%;
 	list-style-type: none;
 }
 
