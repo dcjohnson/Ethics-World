@@ -77,7 +77,7 @@ textarea {
 }
 
 #newquestion [name=question] {
-	transition: box-shadow 0.25s linear;
+	transition: box-shadow 0.15s linear;
 	padding: 5px;
 	border-radius: 3px;
 	border-width: 0;
