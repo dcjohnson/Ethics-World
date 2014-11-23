@@ -117,3 +117,11 @@ textarea {
 #newquestion input[type=submit]:hover {
 	cursor: pointer;
 }
+
+#questions > ul > li {
+	background-color: rgb(40, 40, 40);
+	border-radius: 5px;
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
