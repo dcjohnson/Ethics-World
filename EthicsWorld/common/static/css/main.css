@@ -118,6 +118,10 @@ textarea {
 	cursor: pointer;
 }
 
+#questions > ul {
+	list-style-type: none;
+}
+
 #questions > ul > li {
 	background-color: rgb(40, 40, 40);
 	border-radius: 5px;
