@@ -3,6 +3,6 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
-#links {
+#links > ul > li {
 	display: inline;
 }
