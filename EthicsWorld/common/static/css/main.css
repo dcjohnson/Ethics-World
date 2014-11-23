@@ -80,6 +80,7 @@ textarea {
 	margin-left: auto;
 
 	padding: 15px;
+	padding-bottom: 0px;
 	border-radius: 5px;
 
 	width: 70%;
