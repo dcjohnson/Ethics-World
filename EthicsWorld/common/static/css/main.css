@@ -52,3 +52,13 @@ body {
 	color: white;
 	text-decoration: none;
 }
+
+/* Forum (eventually move there) */
+
+#newqustion {
+	margin-right: auto;
+	margin-left: auto;
+
+	width: 50%;
+	background-color: rgba(20, 20, 20, 0.5);
+}
