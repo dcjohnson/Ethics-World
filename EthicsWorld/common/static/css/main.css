@@ -74,6 +74,7 @@ textarea {
 /* Forum (eventually move there) */
 
 #newquestion {
+	margin-top: 15px;
 	margin-right: auto;
 	margin-left: auto;
 
@@ -90,7 +91,6 @@ textarea {
 	transition: all 0.25s linear;
 	padding: 5px;
 	margin-bottom: 5px;
-	margin-top: 15px;
 
 	background-color: rgba(0,0,0,0);
 
