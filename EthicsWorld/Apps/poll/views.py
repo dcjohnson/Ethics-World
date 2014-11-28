@@ -12,15 +12,25 @@ def Index(request):
     }
     return render(request, "poll/pollindex.html", htmlData)
 
+def TestIp(pollData, request):
+    answersOfIp = Answer.objects.filter(answerIPOfAnswerer = request.META['REMOTE_ADDR'])
+    for answer in answersOfIp:
+        if (answer.answerQuestionHash == pollData.questionHash):
+            return True;
+    return False;
+
 def IndividualPoll(request):
     try:
         pollData = Question.objects.get(questionHash = request.GET['pollhash'])
-        answerData = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['pollhash'])
-        htmlData = {
-            'poll':pollData,
-            'avaliableanswers':answerData
-        }
-        return render(request, "poll/individualpoll.html", htmlData)
+        if (TestIp(pollData, request)):
+            return HttpResponseRedirect(reverse("poll:index"))
+        else:
+            answerData = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['pollhash'])
+            htmlData = {
+                'poll':pollData,
+                'avaliableanswers':answerData
+            }
+            return render(request, "poll/individualpoll.html", htmlData)
     except:
         return HttpResponseRedirect(reverse("poll:index"))
 
