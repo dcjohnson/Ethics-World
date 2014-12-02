@@ -20,18 +20,30 @@ def TestIp(pollData, request):
             return True;
     return False;
 
+def FormatResponseData(responses, avaliableAnswers):
+    formattedResponse = []
+    filler = {'total':0}
+    responsesIndex = 0
+    for avaliableAnswer in avaliableAnswers:
+        if (avaliableAnswer.avaliableAnswersHash == responses[responsesIndex]['answerChoiceHash']):
+            formattedResponse.append((responses[responsesIndex], avaliableAnswer))
+            responsesIndex += 1
+        else:
+            formattedResponse.append((filler, avaliableAnswer))
+    return formattedResponse
+
 def IndividualPoll(request):
     try:
         pollData = Question.objects.get(questionHash = request.GET['pollhash'])
-        # if (TestIp(pollData, request)):
-        #     return HttpResponseRedirect(reverse("poll:index"))
-        # else:
-        answerData = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['pollhash'])
-        htmlData = {
-            'poll':pollData,
-            'avaliableanswers':answerData
-        }
-        return render(request, "poll/individualpoll.html", htmlData)
+        if (TestIp(pollData, request)):
+            return HttpResponseRedirect(reverse("poll:index"))
+        else:
+            answerData = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['pollhash'])
+            htmlData = {
+                'poll':pollData,
+                'avaliableanswers':answerData
+            }
+            return render(request, "poll/individualpoll.html", htmlData)
     except:
         return HttpResponseRedirect(reverse("poll:index"))
 
@@ -54,11 +66,10 @@ def MakePoll(request):
 
 def RenderPollStats(request):
     try:
-        responses = Answer.objects.filter(answerQuestionHash = request.GET['questionhash']).values('answerChoiceHash').annotate(total = Count('answerChoiceHash')).order_by('-answerChoiceHash')
-        avaliableAnswers = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['questionhash']).order_by('-avaliableAnswersHash').order_by('avaliableAnswersText')
+        responses = Answer.objects.filter(answerQuestionHash = request.GET['questionhash']).values('answerChoiceHash').annotate(total = Count('answerChoiceHash')).order_by('answerChoiceHash')
+        avaliableAnswers = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['questionhash']).order_by('avaliableAnswersHash')
         responseCount = len(Answer.objects.filter(answerQuestionHash = request.GET['questionhash']))
-        filler = {'total': 0}
-        responseData = itertools.zip_longest(responses, avaliableAnswers, fillvalue = filler)
+        responseData = FormatResponseData(responses, avaliableAnswers)
         htmlData = {
             'responsesCount':responseCount,
             'responseData':responseData
