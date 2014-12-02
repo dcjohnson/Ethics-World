@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from Apps.poll.models import Question, AvaliableAnswers, Answer
 from common import helpers
 from django.db.models import Count
+import itertools
 
 def Index(request):
     pollData = Question.objects.all()
@@ -22,15 +23,15 @@ def TestIp(pollData, request):
 def IndividualPoll(request):
     try:
         pollData = Question.objects.get(questionHash = request.GET['pollhash'])
-        if (TestIp(pollData, request)):
-            return HttpResponseRedirect(reverse("poll:index"))
-        else:
-            answerData = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['pollhash'])
-            htmlData = {
-                'poll':pollData,
-                'avaliableanswers':answerData
-            }
-            return render(request, "poll/individualpoll.html", htmlData)
+        # if (TestIp(pollData, request)):
+        #     return HttpResponseRedirect(reverse("poll:index"))
+        # else:
+        answerData = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['pollhash'])
+        htmlData = {
+            'poll':pollData,
+            'avaliableanswers':answerData
+        }
+        return render(request, "poll/individualpoll.html", htmlData)
     except:
         return HttpResponseRedirect(reverse("poll:index"))
 
@@ -53,10 +54,11 @@ def MakePoll(request):
 
 def RenderPollStats(request):
     try:
-        responses = Answer.objects.filter(answerQuestionHash = request.GET['questionhash']).values('answerChoiceHash').annotate(total = Count('answerChoiceHash')).order_by('answerChoiceHash')
-        avaliableAnswers = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['questionhash']).order_by('avaliableAnswersHash')
+        responses = Answer.objects.filter(answerQuestionHash = request.GET['questionhash']).values('answerChoiceHash').annotate(total = Count('answerChoiceHash')).order_by('-answerChoiceHash')
+        avaliableAnswers = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['questionhash']).order_by('-avaliableAnswersHash').order_by('avaliableAnswersText')
         responseCount = len(Answer.objects.filter(answerQuestionHash = request.GET['questionhash']))
-        responseData = zip(responses, avaliableAnswers)
+        filler = {'total': 0}
+        responseData = itertools.zip_longest(responses, avaliableAnswers, fillvalue = filler)
         htmlData = {
             'responsesCount':responseCount,
             'responseData':responseData
