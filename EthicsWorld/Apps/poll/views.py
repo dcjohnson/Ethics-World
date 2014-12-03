@@ -23,11 +23,10 @@ def TestIp(pollData, request):
 def FormatResponseData(responses, avaliableAnswers):
     formattedResponse = []
     filler = {'total':0}
-    responsesIndex = 0
     for avaliableAnswer in avaliableAnswers:
-        if (avaliableAnswer.avaliableAnswersHash == responses[responsesIndex]['answerChoiceHash']):
-            formattedResponse.append((responses[responsesIndex], avaliableAnswer))
-            responsesIndex += 1
+        response = [x for x in responses if x['answerChoiceHash'] == avaliableAnswer.avaliableAnswersHash]
+        if (len(response) > 0):
+            formattedResponse.append((response[0], avaliableAnswer))
         else:
             formattedResponse.append((filler, avaliableAnswer))
     return formattedResponse
@@ -66,8 +65,8 @@ def MakePoll(request):
 
 def RenderPollStats(request):
     try:
-        responses = Answer.objects.filter(answerQuestionHash = request.GET['questionhash']).values('answerChoiceHash').annotate(total = Count('answerChoiceHash')).order_by('answerChoiceHash')
-        avaliableAnswers = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['questionhash']).order_by('avaliableAnswersHash')
+        responses = Answer.objects.filter(answerQuestionHash = request.GET['questionhash']).values('answerChoiceHash').annotate(total = Count('answerChoiceHash'))
+        avaliableAnswers = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['questionhash']).order_by('avaliableAnswersText')
         responseCount = len(Answer.objects.filter(answerQuestionHash = request.GET['questionhash']))
         responseData = FormatResponseData(responses, avaliableAnswers)
         htmlData = {
