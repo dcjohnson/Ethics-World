@@ -27,3 +27,8 @@ python3 manage.py migrate
 python3 manage.py createsuperuser
 
 Now that the environment is setup, you can start the development server with: python3 manage.py runserver
+
+Current Issue
+=============
+
+Discovered that you can vote twice with the back button.
