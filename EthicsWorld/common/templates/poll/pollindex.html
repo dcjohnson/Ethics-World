@@ -46,9 +46,7 @@
         </ul>
     </div>
     <div id = "newpoll">
-        <textarea name = "polltext" form = "pollform" rows = "10" cols = "50">
-            New Question
-        </textarea>
+        <textarea name = "polltext" form = "pollform" rows = "10" cols = "50" placeholder="New Question"></textarea>
         </br>
         <form action = "{% url 'poll:makepoll' %}" method = "POST" id = "pollform">
             {% csrf_token %}

@@ -6,9 +6,7 @@
         {% csrf_token %}
         Input url of news site here <input type = "url" name = "newsurl"/>
         <br/>
-        <textarea name = "newsinformation" form = "newsform" rows = "5" cols = "100">
-            Enter new information about the news here.
-        </textarea>
+        <textarea name = "newsinformation" form = "newsform" rows = "5" cols = "100" placeholder="Enter new information about the news here."></textarea>
         <br/>
         <input type = "submit" value = "Post Question"/>
     </form>

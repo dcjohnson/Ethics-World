@@ -73,7 +73,9 @@ textarea {
 
 /* Forum (eventually move there) */
 
-#newquestion {
+#newquestion, #newnews, #newpoll {
+	color: white;
+
 	margin-top: 40px;
 	margin-bottom: 40px;
 	margin-right: auto;
@@ -89,9 +91,10 @@ textarea {
 	box-shadow: 0 0 5px rgba(20, 20, 20, 0.5);
 }
 
-#newquestion [name=question] {
+#newquestion [name=question], #newnews [name=newsinformation], #newpoll [name=polltext] {
 	transition: all 0.25s linear;
 	padding: 5px;
+	margin-top: 5px;
 	margin-bottom: 15px;
 
 	background-color: white;
@@ -102,30 +105,31 @@ textarea {
 	width: 100%;
 }
 
-#newquestion [name=question]:focus {
+#newquestion [name=question]:focus, #newnews [name=newsinformation], #newpoll [name=polltext] {
 	box-shadow: 0 0 5px black;
 }
 
-#newquestion input[type=submit] {
+#newquestion input[type=submit], #newnews input[type=submit], #newpoll input[type=submit], #newpoll button {
 	padding: 5px;
+	margin: 5px;
 	background-color: #4284d3;
 	color: white;
 	border: none;
 	border-radius: 3px;
 }
 
-#newquestion input[type=submit]:hover {
+#newquestion input[type=submit]:hover, #newnews input[type=submit]:hover, #newpoll input[type=submit]:hover, #newpoll button {
 	cursor: pointer;
 }
 
-#questions > ul {
+#questions > ul, #currentnews > ul, #polls > ul {
 	padding: 0;
 	width: 70%;
 	margin: auto;
 	list-style-type: none;
 }
 
-#questions > ul > li {
+#questions > ul > li, #currentnews > ul > li, #polls > ul > li {
 	background-color: rgb(240, 240, 240);
 	border-radius: 5px;
 	padding: 15px;
