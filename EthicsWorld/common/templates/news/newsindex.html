@@ -4,7 +4,7 @@
 <div id = "newnews">
     <form action = "{% url 'news:addnews' %}" method = "POST" id = "newsform">
         {% csrf_token %}
-        Input url of news site here <input type = "url" name = "newsurl"/>
+        Input url of news site here <input type = "url" name = "newsurl" required/>
         <br/>
         <textarea name = "newsinformation" form = "newsform" rows = "5" cols = "100" placeholder="Enter new information about the news here."></textarea>
         <br/>

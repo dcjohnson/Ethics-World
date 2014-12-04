@@ -27,7 +27,7 @@
         <h3>
             Comment
         </h3>
-        <textarea name = "comment" form = "commentform" rows = "5" cols = "20" placeholder="Enter new comment here."></textarea>
+        <textarea name = "comment" form = "commentform" rows = "5" cols = "20" placeholder="Enter new comment here." required></textarea>
         <form action = "{% url 'forum:createcomment' %}" method = "POST" id = "commentform">
             {% csrf_token %}
             <input type = "hidden" name = "issueHash" value = "{{question.issueHash}}" />

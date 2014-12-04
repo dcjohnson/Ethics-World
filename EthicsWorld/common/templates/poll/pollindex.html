@@ -25,6 +25,10 @@
         function DeleteAnswer(answer)
         {
             document.getElementById("answers").removeChild(answer.parentNode);
+            if (document.getElementById("answers").childNodes.length === 1)
+            {
+                AddAnswer();
+            }
         }
     </script>
 {% endblock %}
@@ -46,7 +50,7 @@
         </ul>
     </div>
     <div id = "newpoll">
-        <textarea name = "polltext" form = "pollform" rows = "10" cols = "50" placeholder="New Question"></textarea>
+        <textarea name = "polltext" form = "pollform" rows = "10" cols = "50" placeholder="New Question" required></textarea>
         </br>
         <form action = "{% url 'poll:makepoll' %}" method = "POST" id = "pollform">
             {% csrf_token %}
@@ -59,4 +63,7 @@
             <input type = "submit" value = "Create Poll"/>
         </form>
     </div>
+    <script type = "text/javascript">
+        AddAnswer();
+    </script>
 {% endblock %}
