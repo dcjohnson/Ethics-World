@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from Apps.poll.models import Question, AvaliableAnswers, Answer
 from common import helpers
 from django.db.models import Count
+import itertools
 
 def Index(request):
     pollData = Question.objects.all()
@@ -12,15 +13,36 @@ def Index(request):
     }
     return render(request, "poll/pollindex.html", htmlData)
 
+def TestIp(pollData, request):
+    answersOfIp = Answer.objects.filter(answerIPOfAnswerer = request.META['REMOTE_ADDR'])
+    for answer in answersOfIp:
+        if (answer.answerQuestionHash == pollData.questionHash):
+            return True;
+    return False;
+
+def FormatResponseData(responses, avaliableAnswers):
+    formattedResponse = []
+    filler = {'total':0}
+    for avaliableAnswer in avaliableAnswers:
+        response = [x for x in responses if x['answerChoiceHash'] == avaliableAnswer.avaliableAnswersHash]
+        if (len(response) > 0):
+            formattedResponse.append((response[0], avaliableAnswer))
+        else:
+            formattedResponse.append((filler, avaliableAnswer))
+    return formattedResponse
+
 def IndividualPoll(request):
     try:
         pollData = Question.objects.get(questionHash = request.GET['pollhash'])
-        answerData = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['pollhash'])
-        htmlData = {
-            'poll':pollData,
-            'avaliableanswers':answerData
-        }
-        return render(request, "poll/individualpoll.html", htmlData)
+        if (TestIp(pollData, request)):
+            return HttpResponseRedirect(reverse("poll:index"))
+        else:
+            answerData = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['pollhash'])
+            htmlData = {
+                'poll':pollData,
+                'avaliableanswers':answerData
+            }
+            return render(request, "poll/individualpoll.html", htmlData)
     except:
         return HttpResponseRedirect(reverse("poll:index"))
 
@@ -43,10 +65,10 @@ def MakePoll(request):
 
 def RenderPollStats(request):
     try:
-        responses = Answer.objects.filter(answerQuestionHash = request.GET['questionhash']).values('answerChoiceHash').annotate(total = Count('answerChoiceHash')).order_by('answerChoiceHash')
-        avaliableAnswers = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['questionhash']).order_by('avaliableAnswersHash')
+        responses = Answer.objects.filter(answerQuestionHash = request.GET['questionhash']).values('answerChoiceHash').annotate(total = Count('answerChoiceHash'))
+        avaliableAnswers = AvaliableAnswers.objects.filter(avaliableAnswersQuestionHash = request.GET['questionhash']).order_by('avaliableAnswersText')
         responseCount = len(Answer.objects.filter(answerQuestionHash = request.GET['questionhash']))
-        responseData = zip(responses, avaliableAnswers)
+        responseData = FormatResponseData(responses, avaliableAnswers)
         htmlData = {
             'responsesCount':responseCount,
             'responseData':responseData
