@@ -6,7 +6,7 @@ This is the term project that Brent Blasingame and I are creating for our ethics
 Disclaimer!!!
 =============
 
-This is my first Django project.  It is pretty crappy!
+This is my first Django project.
 
 Installation
 ============
